@@ -20,7 +20,9 @@ $country=htmlspecialchars(strip_tags($country));
 if($country!=""){
   foreach($results as $countries){
     if (strcasecmp($country,$countries['name'])==0){
-      echo $countries['name'] . ' is ruled by ' . $countries['head_of_state'];
+       echo '<table> <tr>  <th>   Name   </th>  <th>   Continent   </th>  <th>   Independence   </th>  <th>   Head of State   </th>  </tr>';
+       echo "<tr>  <td>". $countries['name'].  "</td>   <td>".  $countries['continent'].  "</td>    <td>".  $countries['independence_year'].  "</td>    <td>".   $countries['head_of_state'].   "</td>  </tr>";
+       echo '</table>';
       exit();
     }
   }
@@ -29,8 +31,21 @@ if($country!=""){
 
 
 ?>
-<ul>
+<table> 
+  <tr>  
+    <th>Name</th>
+    <th>Continent</th>  
+    <th>Independence</th>  
+    <th>Head of State</th>
+  <tr>
 <?php foreach ($results as $row): ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
+ <tr>  
+  <td><?= $row['name']?></td> 
+  <td><?= $row['continent'] ?></td>
+  <td><?= $row['independence_year']?></td>
+  <td><?= $row['head_of_state']?></td> 
+ </tr>
+  
 <?php endforeach; ?>
-</ul>
+</table>
+
